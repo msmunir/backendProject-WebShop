@@ -40,7 +40,11 @@ exports.login = async (req, res) => {
         }
 
         const verifyUser = await bcrypt.compare(password, user.password)
-        res.status(200).json("Token: " + auth.generateToken(verifyUser))
+        if(!verifyUser){
+            return res.status(401).json({ message: "Wrong Credentials."})
+        }
+
+        res.status(200).json("Token: " + auth.generateToken(user))
 
     } catch (error) {
         res.status(401).json({ message: "User does not exists."})
