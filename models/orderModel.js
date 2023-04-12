@@ -1,11 +1,7 @@
 const Order = require('../schemas/orderSchema');
-const Product = require('../schemas/productSchema');
-const User = require('../schemas/userSchema');
-
 
 exports.createNewOrder = async (req, res) => {
     
-
     const { orderRows } = req.body
     if (!orderRows){
         return res.status(400).json({ message: "All the fields require to create product."})
@@ -40,11 +36,4 @@ exports.getAllOrder = async (req, res) => {
         res.status(500).json({ message: "Oh snap! something went wrong!"})
     }
 }
-
-// Get products by specific User
-// exports.getProductByUser = async (req, res) => {
-//     const productByUser = await Product.find({ user: req.userId })
-//     res.status(200).json(getProductByUser)
-// }
-
 

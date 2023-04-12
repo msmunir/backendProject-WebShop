@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { createNewProduct, getAllProducts, getProductById, updateProductById, deleteProductById } = require('../models/productModel');
-// const { createNewProduct, getAllProducts, getProductById, getProductByUser, updateProductById, deleteProductById } = require('../models/productModel');
+
 
 //verification
 const { verifyToken } = require('../authentication/auth')
@@ -13,7 +13,6 @@ router.post('/', createNewProduct)
 
 //GET - READ
 router.get('/', getAllProducts)
-// router.get('/user/:id', getProductByUser)
 router.get('/:id', getProductById)
 
 

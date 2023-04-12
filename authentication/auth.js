@@ -16,7 +16,7 @@ exports.verifyToken = (req, res, next) => {
 
         next()
     } catch (error) {
-        return res.status(401).json({ message: "login failed"})
+        return res.status(401).json({ message: "Wrong Credentials."})
     }
 }
 

@@ -16,15 +16,16 @@ const orderSchema = new Schema({
 //         type: mongoose.Types.ObjectId,
 //         ref: 'User'
 //     },
-//     orderRows: {
+//     orderRows: [{
 //         product: {
 //             type: mongoose.Types.ObjectId,
 //             ref: 'Product'
 //         },
 //         quantity: {
-//             type: Number
+//             type: Number,
+//             required: [true, 'must provide quantity']
 //         }
-//     }
+//     }]
 // })
 
 
