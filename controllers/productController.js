@@ -2,11 +2,14 @@ const router = require('express').Router();
 const { createNewProduct, getAllProducts, getProductById, updateProductById, deleteProductById } = require('../models/productModel');
 
 
+//verification
+const { verifyToken } = require('../authentication/auth')
 
 
 
 //POST - CREATE
 router.post('/', createNewProduct)
+// router.post('/', verifyToken, createNewProduct)
 
 //GET - READ
 router.get('/', getAllProducts)

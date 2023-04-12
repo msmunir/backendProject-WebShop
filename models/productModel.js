@@ -1,25 +1,21 @@
 const Product = require('../schemas/productSchema');
 
-
-
 // Creating Product
 exports.createNewProduct = async (req, res) => {
+    
+    const { name, description, imgURL, price } = req.body;
 
-    const { name, description, imgURL, price, quantity } = req.body;
-
-    if(!name || !description || !imgURL || !price || !quantity ) {
+    if(!name || !description || !imgURL || !price) {
         return res.status(400).json({ message: "All the fields require to create product."})
     }
     try {
-        const product = await Product.create({ name, description, imgURL, price, quantity })
-        console.log(product)
+        const product = await Product.create({ name, description, imgURL, price })
         res.status(201).json(product)
     } catch {
         res.status(500).json({ message: "Oh snap! something went wrong!"})
     }
 
 }
-
 
 // Get all the products
 exports.getAllProducts = async (req, res) => {
@@ -31,8 +27,6 @@ exports.getAllProducts = async (req, res) => {
     }
 }
 
-
-
 // Get one specific product
 exports.getProductById = async (req, res) => {
     try {     
@@ -43,8 +37,6 @@ exports.getProductById = async (req, res) => {
     }
 }
 
-
-
 // Update a product
 exports.updateProductById = async (req, res) => {
     try {
@@ -54,8 +46,6 @@ exports.updateProductById = async (req, res) => {
         res.status(500).json({ message: "Oh snap! something went wrong!"})
     }
 }
-
-
 
 // Delete a product from DB
 exports.deleteProductById = async (req, res) => {
